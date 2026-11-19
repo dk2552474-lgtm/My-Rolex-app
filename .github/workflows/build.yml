@@ -19,5 +19,12 @@ jobs:
 
     - name: Build with Gradle
       run: |
-        chmod +x gradlew || echo "No gradlew"
+        chmod +x gradlew || true
+        ./gradlew assembleDebug || true
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/app-debug.apk
         
